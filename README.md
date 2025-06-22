@@ -1,5 +1,20 @@
 ## AST explorer
 
+A fork that adds [tree-gex](https://github.com/d7sd6u/tree-gex) matcher support and will try to modernise the UI and the codebase to facilitate new features and use-cases.
+
+## Roadmap
+
+- Move from Webpack to Vite for HMR and better DX
+- Move from Javascript to Typescript
+- Add linting, formatting and tests
+- Add full matchers UI: matches and named groups should be highlighted in the AST viewer and in the editor.
+- Tree-gex debug mode: step-by-step execution of the tree-gex matchers similar to https://regex101.com/ debugger
+- Support new languages and parsers, especially those requested in the original repo
+- Modularise parsers and transformers: make them semi-independent package(s) inside this to-be-monorepo
+- Create VSCode extension with live inspector, matcher, transformer and debugger over opened files
+
+---
+
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/fkling/astexplorer)
 [![Join the chat at https://gitter.im/astexplorer/Lobby](https://badges.gitter.im/astexplorer/Lobby.svg)](https://gitter.im/astexplorer/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/fkling/astexplorer.svg?branch=master)](https://travis-ci.org/fkling/astexplorer)
