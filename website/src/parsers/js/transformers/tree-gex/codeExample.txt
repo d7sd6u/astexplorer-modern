@@ -1,0 +1,7 @@
+import * as w from 'tree-gex';
+
+const pattern = { type: 'TemplateLiteral', expressions: [w.group({ type: "Identifier" }, "id")] };
+
+const matches = w.accumWalkMatch(require('ast'), pattern);
+
+export default matches.map(m => m.groups.id[0].value)[0];

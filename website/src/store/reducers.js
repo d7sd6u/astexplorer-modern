@@ -381,6 +381,10 @@ function cursor(state=initialState.cursor, action) {
     case actions.SET_SNIPPET:
     case actions.CLEAR_SNIPPET:
       return null;
+    case actions.SET_TRANSFORM_RESULT:
+      if (action.result.match) {
+        return action.result.match.range[0];
+      }      
     default:
       return state;
   }

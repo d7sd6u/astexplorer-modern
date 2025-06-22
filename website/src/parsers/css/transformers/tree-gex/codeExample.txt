@@ -1,0 +1,7 @@
+import * as w from 'tree-gex';
+
+const pattern = { selector: '#main' };
+
+const matches = w.accumWalkMatch(require('ast'), pattern);
+
+export default matches.map(m => m.match)[0];

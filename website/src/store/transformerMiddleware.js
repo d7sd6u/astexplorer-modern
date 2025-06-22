@@ -1,5 +1,6 @@
 import {getTransformer, getTransformCode, getCode, showTransformer, getAst} from './selectors';
 import {SourceMapConsumer} from 'source-map/lib/source-map-consumer';
+import { publish } from '../utils/pubsub';
 
 async function transform(transformer, transformCode, code, ast) {
   // Transforms may make use of Node's __filename global. See GitHub issue #420.
@@ -15,13 +16,15 @@ async function transform(transformer, transformCode, code, ast) {
     realTransformer = await transformer._promise;
     let result = await transformer.transform(realTransformer, transformCode, code, ast);
     let map = null;
+    let match = null;
     if (typeof result !== 'string') {
       if (result.map) {
         map = new SourceMapConsumer(result.map);
       }
+      match = result.match;
       result = result.code;
     }
-    return { result, map, version: realTransformer.version, error: null };
+    return { result, map, match, version: realTransformer.version, error: null };
   } catch(error) {
     return {
       error,
@@ -75,6 +78,10 @@ export default store => next => async (action) => {
       newCode !== getCode(store.getState())
     ) {
       return;
+    }
+
+    if (result.match) {
+      publish("HIGHLIGHT", result.match);
     }
 
     if (result.error) {
