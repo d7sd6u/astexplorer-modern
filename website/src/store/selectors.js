@@ -70,6 +70,10 @@ export function getCode(state) {
   return state.workbench.code;
 }
 
+export function getAst(state) {
+  return state.workbench.parseResult?.ast;
+}
+
 export function getInitialCode(state) {
   return state.workbench.initialCode;
 }
