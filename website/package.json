@@ -179,7 +179,7 @@
     "start": "serve -l 8080 ../out",
     "build": "rimraf ../out/* && cross-env NODE_ENV=production webpack --mode=production",
     "build-dev": "rimraf ../out/* && cross-env NODE_ENV=development webpack -d --mode=development",
-    "watch": "webpack -dw --mode=development",
+    "watch": "NODE_OPTIONS=--openssl-legacy-provider webpack -dw --mode=development",
     "lint": "node_modules/eslint/bin/eslint.js src/",
     "fontcustom": "fontcustom compile ./fontcustom/input-svg/ --config=./fontcustom/config.yml"
   }
