@@ -159,7 +159,7 @@
     "tenko": "^1.0.6",
     "tern": "^0.24.3",
     "traceur": "0.0.111",
-    "tree-gex": "0.0.5",
+    "tree-gex": "0.0.8",
     "tslint": "^6.1.1",
     "typescript": "^5.0.4",
     "typescript-eslint-parser": "^22.0.0",

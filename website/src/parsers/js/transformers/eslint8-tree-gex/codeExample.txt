@@ -1,0 +1,42 @@
+import * as w from "tree-gex";
+
+export const meta = {
+  type: "problem",
+  hasSuggestions: true,
+  fixable: true,
+};
+
+export function create(context) {
+  return {
+    Program(node) {
+      w.walkMatch(
+        node,
+        {
+          type: "BinaryExpression",
+          left: { type: "Literal", value: w.string() },
+          right: { type: "Identifier", name: w.string() },
+          operator: "+",
+        },
+        (node, _, replacement) => {
+          context.report({
+            node,
+            message:
+              "Do not concat literal string with identifiers. Use template strings",
+
+            fix(fixer) {
+              if (node.expressions.length) {
+                // Can't auto-fix template literal with expressions
+                return;
+              }
+
+              return fixer.replaceText(
+                node,
+                `\`${node.left.value}\$\{${node.right.name}\}\``
+              );
+            },
+          });
+        }
+      );
+    },
+  };
+}

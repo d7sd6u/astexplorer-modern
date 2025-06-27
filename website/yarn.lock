@@ -11444,10 +11444,10 @@ traceur@0.0.111:
     semver "^4.3.3"
     source-map-support "~0.2.8"
 
-tree-gex@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/tree-gex/-/tree-gex-0.0.5.tgz#da9d13f21c08306020371e703f08889170f8b346"
-  integrity sha512-AGthyvgAd9nSugkeBFgqDwFW4h/f08Tb/lSjaRu+Pa+NUX4j9fH2VBYJUS4XMCIyatS2rizXicOOKZCuup0xjg==
+tree-gex@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/tree-gex/-/tree-gex-0.0.8.tgz#ebb9548cf7d6cd3c23dd5c3201470570cfc1c0ab"
+  integrity sha512-nj7h3NqBNFB3QgMrfzao95qtWLbokbs93rIqtnzRUvjPL16sd3Z1zi0RdX5IB3jRtWW9Q/FNAAtpqq9SBzVDug==
   optionalDependencies:
     "@types/node" "^24.0.1"
     graphql "^16.11.0"

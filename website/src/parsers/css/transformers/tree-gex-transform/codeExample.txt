@@ -1,0 +1,49 @@
+import * as w from "tree-gex";
+
+const pattern = {
+  type: "atrule",
+  name: "media",
+  params: w.regex(/\((max|min)-width: \d{3}px\)/),
+  nodes: w.arrayFor({
+    type: "rule",
+    nodes: w.arrayFor({
+      type: "decl",
+      prop: "background-color",
+      value: w.transform(w.string(), () => "red"),
+    }),
+  }),
+};
+
+export default w.walkReplace(require("ast"), pattern, (k) => k === "source");
+
+/*
+@media screen and (min-width: 480px) {
+    body {
+        background-color: lightgreen;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    #topic {
+        padding: 3px;
+        background-color: blue !important;
+    }
+  .class {
+    height: 100vw;
+  }
+}
+@media screen and (max-width: 80px) {
+    #topic {
+        background-color: orange;
+      
+    }
+}
+
+#main {
+    border: 1px solid black;
+}
+
+ul li {
+	padding: 5px;
+}
+*/

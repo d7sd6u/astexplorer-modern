@@ -26,11 +26,11 @@ function getSourceFromResult(result, code) {
   let linesOfCode = code.split('\n');
   return linesOfCode[result.line - 1];
 }
-export function defineRule(eslint, code) {
+export function defineRule(eslint, code, globals) {
   // Compile the transform code and install it as an ESLint rule. The rule
   // name doesn't really matter here, so we'll just use a hard-coded name.
   code = transpile(code);
-  const rule = compileModule(code);
+  const rule = compileModule(code, globals);
   eslint.defineRule('astExplorerRule', rule.default || rule);
 }
 
